@@ -29,8 +29,8 @@ def query_dns_server(domain,question_type):
 # Define a function to compare the results from the local and public DNS servers for each domain name in the list
 def compare_dns_servers(domainList,question_type):
     for domain_name in domainList:
-        local_ip_address = query_dns_server(domain_name, question_type)
-        public_ip_address = query_dns_server(domain_name, question_type)
+        local_ip_address = query_dns_server(domain_name, question_type, local_host_ip)
+        public_ip_address = query_dns_server(domain_name, question_type, real_name_server)
         if local_ip_address != public_ip_address:
             return False
     return True    
@@ -46,12 +46,12 @@ def local_external_DNS_output(question_type):
     print("\nPublic DNS Server")
 
     for domain_name in domainList:
-        ip_address = ?????(domain_name,question_type)
+        ip_address = query_local_dns_server (domain_name,question_type)
         print(f"The IP address of {domain_name} is {ip_address}")
         
         
-def exfiltrate_info(???,???): # testing method for part 2
-    data = query_local_dns_server(???,???)
+def exfiltrate_info(domain,question_type): # testing method for part 2
+    data = query_local_dns_server(domain,question_type)
     return data 
 
         
