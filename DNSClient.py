@@ -3,7 +3,7 @@ import dns.resolver
 # Set the IP address of the local DNS server and a public DNS server
 local_host_ip = "127.0.0.1"
 real_name_server = "8.8.8.8" # Research public DNS servers to find a valid DNS server IP address to use
-question_type = "A"
+question_type = "AAAA"
 
 
 # Create a list of domain names to query - use the same list from the DNS Server
@@ -52,7 +52,7 @@ def local_external_DNS_output(question_type):
         
         
 def exfiltrate_info(domain,question_type): # testing method for part 2
-    data = query_dns_server(domain,question_type, local_host_ip)
+    data = query_dns_server(domain, question_type, local_host_ip)
     return data 
 
         
