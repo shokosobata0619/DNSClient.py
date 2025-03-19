@@ -3,7 +3,6 @@ import dns.resolver
 # Set the IP address of the local DNS server and a public DNS server
 local_host_ip = "127.0.0.1"
 real_name_server = "8.8.8.8" # Research public DNS servers to find a valid DNS server IP address to use
-question_type = "A"
 
 # Create a list of domain names to query - use the same list from the DNS Server
 domainList  = ['example.com.','safebank.com.','google.com.','nyu.edu.','legitsite.com.']
@@ -23,7 +22,7 @@ def query_dns_server(domain,question_type):
     resolver.nameservers = [dns_server_ip]
     answers = resolver.resolve(domain, question_type) # provide the domain and question_type
 
-    ip_address = answers[??].to_text()
+    ip_address = answers[0].to_text()
     return ip_address
     
 # Define a function to compare the results from the local and public DNS servers for each domain name in the list
